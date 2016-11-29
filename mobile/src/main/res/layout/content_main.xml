@@ -13,8 +13,19 @@
     tools:context="com.paularanas.presentmomentapp.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <Button
+        android:text="Check Time"
+        android:onClick="checkTheTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/time_button" />
+
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/time_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Time is Now"
+        android:visibility="invisible"/>
 </RelativeLayout>
