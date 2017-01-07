@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quotes">
+
+        <item>Always say \'yes\' to the present moment... Surrender to what is. Say \'yes\' to life - and see how life starts suddenly to start working for you rather than against you. --Eckhart Tolle</item>
+        <item>The present moment, if you think about it, is the only time there is. No matter what time it is, it is always now. --Marianne Williamson</item>
+        <item>Life gives you plenty of time to do whatever you want to do if you stay in the present moment. --Deepak Chopra</item>
+        <item>A great hallmark of mental wellness is the ability to be in the present moment, fully and with no thoughts of being elsewhere. --Wayne Dyer</item>
+
+    </string-array>
+    
+    
+</resources>

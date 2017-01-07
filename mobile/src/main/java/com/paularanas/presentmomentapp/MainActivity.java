@@ -10,7 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +21,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        TextView quotes = (TextView) findViewById(R.id.quote_text);
+        String[] quoteArray = getResources().getStringArray(R.array.quotes);
+        Random random = new Random();
+        int index = random.nextInt(4);
+        String quote = quoteArray[index];
+        quotes.setText(quote);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
