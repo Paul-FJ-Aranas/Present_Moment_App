@@ -9,17 +9,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.paularanas.presentmomentapp.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <Button
+    <ToggleButton
         android:id="@+id/time_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/quote_text"
-        android:onClick="checkTheTime"
-        android:text="Check Time" />
+        android:textOff="Check Time"
+        android:textOn="Hide Time"/>
 
     <TextView
         android:id="@+id/time_text"
@@ -29,12 +30,12 @@
         android:layout_marginTop="20dp"
         android:text="@string/the_time_is_now"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/white"
         android:visibility="invisible" />
 
     <TextView
         android:id="@+id/quote_text"
-        android:textColor="@color/wallet_holo_blue_light"
+        android:textColor="@color/white"
         android:layout_margin="@dimen/text_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

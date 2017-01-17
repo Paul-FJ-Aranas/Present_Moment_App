@@ -8,12 +8,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+import static com.paularanas.presentmomentapp.R.array.quotes;
+import static com.paularanas.presentmomentapp.R.styleable.CompoundButton;
 
+public class MainActivity extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener {
+    ToggleButton toggleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +26,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        TextView quotes = (TextView) findViewById(R.id.quote_text);
-        String[] quoteArray = getResources().getStringArray(R.array.quotes);
+        TextView quote_view = (TextView) findViewById(R.id.quote_text);
+        String[] quoteArray = getResources().getStringArray(quotes);
         Random random = new Random();
         int index = random.nextInt(4);
         String quote = quoteArray[index];
-        quotes.setText(quote);
+        quote_view.setText(quote);
+        toggleButton = (ToggleButton) findViewById(R.id.time_button);
+        toggleButton.setOnCheckedChangeListener(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void checkTheTime(View view) {
-        TextView tv = (TextView) findViewById(R.id.time_text);
-        tv.setVisibility(View.VISIBLE);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -62,5 +65,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        TextView time = (TextView) findViewById(R.id.time_text);
+        time.setText(getResources().getString(R.string.the_time_is_now));
+
+        if (b) {
+            time.setVisibility(View.VISIBLE);
+        } else {
+            time.setVisibility(View.INVISIBLE);
+        }
+
     }
 }
