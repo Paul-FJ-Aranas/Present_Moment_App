@@ -19,6 +19,11 @@ import static com.paularanas.presentmomentapp.R.styleable.CompoundButton;
 
 public class MainActivity extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener {
     ToggleButton toggleButton;
+    String[] quoteArray;
+    TextView quote_view;
+    private boolean firstQuote = true;
+    int previousIndex = 0;
+    int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +31,10 @@ public class MainActivity extends AppCompatActivity implements android.widget.Co
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        TextView quote_view = (TextView) findViewById(R.id.quote_text);
-        String[] quoteArray = getResources().getStringArray(quotes);
+        quote_view = (TextView) findViewById(R.id.quote_text);
+        quoteArray = getResources().getStringArray(quotes);
         Random random = new Random();
-        int index = random.nextInt(4);
+        index = random.nextInt(4);
         String quote = quoteArray[index];
         quote_view.setText(quote);
         toggleButton = (ToggleButton) findViewById(R.id.time_button);
@@ -42,6 +47,29 @@ public class MainActivity extends AppCompatActivity implements android.widget.Co
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void newQuote(View view) {
+        quoteArray = getResources().getStringArray(quotes);
+        Random random = new Random();
+
+        //prevent duplicate quotes on two consecutive clicks
+        if (!firstQuote) {
+            index = random.nextInt(4);
+            while (index == previousIndex) {
+                index = random.nextInt(4);
+            }
+            String quote = quoteArray[index];
+            quote_view.setText(quote);
+            previousIndex = index;
+        } else {
+            index = random.nextInt(4);
+            String quote = quoteArray[index];
+            quote_view.setText(quote);
+            previousIndex = index;
+            firstQuote = false;
+        }
+
     }
 
     @Override
